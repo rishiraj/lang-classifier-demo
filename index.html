@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<meta charSet="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>Dynopii - Language Classifier</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CP7LB2ND4E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CP7LB2ND4E');
+</script>
+</head>
+<style>
+body{
+	padding: 0;
+	margin: 0;
+}
+
+.title {
+	background-color: rgb(48 99 243);
+	width: 100%;
+	text-align: center
+}
+
+.title td{
+	padding: 5px;
+}
+
+.title .logo{
+	width: 220px;
+}
+
+.title h1{
+	font-size: 18pt;
+	font-family: avant garde, verdana, helvetica, sans-serif;
+	color: white;
+	line-height: 1.15;
+}
+
+.title h2{
+	font-size: 12pt;
+	font-family: georgia, times new roman, serif;
+	font-style: italic;
+	color: white;
+	line-height: 1.15;
+}
+
+main{
+	font-family: serif;
+	font-size: 18px;
+	padding: 0 10px 0 10px;
+}
+
+main h1{
+	font-family: sans-serif;
+	font-size: 24px;
+}
+
+main table.samples{
+	text-align: center;
+}
+
+main table.samples th{
+	border-bottom: 2px solid #333;
+	width: 16%;
+	height: 60px;
+}
+
+main table.samples td{
+	border-right: 1px #333 solid;
+	border-bottom: 1px #666 solid;
+	width: 16%;
+	height: 60px;
+}
+
+.mtf { 
+	background-color: rgb(225, 225, 255);
+}
+
+.ftm{
+	background-color: rgb(255, 225, 225);
+}
+
+.source{
+	background-color: rgb(225, 255, 225);
+}
+
+audio{
+  width: 250px;
+}
+
+</style>
+<body>
+<table class="title">
+<tbody>
+<tr>
+<td>
+<h1>Language Classifier</h1>
+<h2>Rishiraj Acharya</h2>
+<h2>Dynopii Inc.</h2>
+<h3>version: 1.0</h3>
+</td>
+</tbody>
+</table>
+<main>
+
+
+<h2>Notes</h2>
+<ul>
+	<li>Please view this page in Google Chrome or Microsoft Edge for best quality</li>
+</ul>
+
+<p>Language classification is a fundamental task in natural language processing (NLP). It involves identifying the language of a given text, which can be useful in a wide range of applications such as information retrieval, text-to-speech synthesis, and sentiment analysis. In this blog post, we will compare two popular approaches for language classification: Naive Bayes and Bidirectional LSTM.</p>
+<h3 id="naive-bayes">Naive Bayes</h3>
+<p>Naive Bayes is a simple yet effective probabilistic algorithm for classification. It assumes that the presence of a particular feature in a class is independent of the presence of other features. In other words, it assumes that each feature contributes independently to the probability of the text belonging to a particular language. The probability of a text being in a language is then computed as the product of the probabilities of each of its features being in that language.</p>
+<p>One of the advantages of Naive Bayes is that it is computationally efficient and can work well even with small datasets. It can also handle large feature spaces, making it suitable for text classification tasks where the number of features (i.e., the size of the vocabulary) can be very large. Naive Bayes also performs well when the training data is imbalanced, i.e., when some classes have many more training examples than others.</p>
+<p>However, Naive Bayes has some limitations. It assumes that the features are independent, which is often not the case in natural language. It also cannot capture the context of the words in the text, which can be important for language classification.</p>
+<h3 id="bidirectional-lstm">Bidirectional LSTM</h3>
+<p>Bidirectional LSTM (Long Short-Term Memory) is a type of recurrent neural network (RNN) that can capture the sequential dependencies between the words in a text. It consists of two LSTM layers, one that reads the text forward and another that reads it backward. The output of the two layers is concatenated, resulting in a representation of the text that takes into account both the past and the future context of each word.</p>
+<p>LSTMs are able to capture long-term dependencies between words and can therefore be very effective for tasks such as language modeling and sequence classification. Bidirectional LSTMs, in particular, can be very useful for language classification as they are able to capture both local and global dependencies in the text.</p>
+<p>However, training a Bidirectional LSTM can be computationally expensive and requires a large amount of training data. It can also be prone to overfitting, especially when the dataset is small. In addition, LSTMs can be difficult to interpret, making it challenging to understand how they arrive at their predictions.</p>
+<h2 id="setup">Setup</h2>
+<p>Clone the repository using the following command:</p>
+<pre><code>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/dynopii/language-classifier.git
+</code></pre><p>Now inside the directory, install the dependencies using the following command:</p>
+<pre><code>pip <span class="hljs-keyword">install</span> -r requirements.txt
+</code></pre><h2 id="benchmark">Benchmark</h2>
+<p>These are the benchmarks as measured from our 70:30 train/test data split:</p>
+<table width="100%" class="samples">
+<thead>
+<tr>
+<th>Metrics</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accuracy</td>
+<td>0.9952550010241005</td>
+</tr>
+<tr>
+<td>Precision</td>
+<td>0.9952905140253191</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td>0.9952652335652669</td>
+</tr>
+<tr>
+<td>F1 Score</td>
+<td>0.9952543465172491</td>
+</tr>
+</tbody>
+</table>
+<h2 id="python-usage">Python usage</h2>
+<h3 id="import-the-classifier">Import the Classifier</h3>
+<p>if not specified, &quot;train.csv&quot; will be loaded as data</p>
+<pre><code class="lang-python"># classifier = LanguageClassifier(<span class="hljs-string">"train.csv"</span>)
+<span class="hljs-keyword">from</span> main <span class="hljs-keyword">import</span> LanguageClassifier
+classifier = LanguageClassifier()
+</code></pre>
+<h3 id="train-the-classifier">Train the Classifier</h3>
+<p>if not specified, &quot;text&quot; column will be used as feature and &quot;target&quot; column will be used as label</p>
+<pre><code class="lang-python"># <span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.train</span>(<span class="hljs-string">"text"</span>, <span class="hljs-string">"target"</span>)
+<span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.train</span>()
+</code></pre>
+<h3 id="train-the-neural-classifier">Train the Neural Classifier</h3>
+<p>if not specified, &quot;text&quot; column will be used as feature and &quot;target&quot; column will be used as label</p>
+<pre><code class="lang-python"># <span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.train_nn</span>(<span class="hljs-string">"text"</span>, <span class="hljs-string">"target"</span>)
+<span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.train_nn</span>()
+</code></pre>
+<h3 id="save-the-classifier">Save the Classifier</h3>
+<p>if not specified, model will be saved as &quot;model.pkl&quot;</p>
+<pre><code class="lang-python"># <span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.save</span>("<span class="hljs-selector-tag">model</span><span class="hljs-selector-class">.pkl</span>")
+<span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.save</span>()
+</code></pre>
+<h3 id="save-the-neural-classifier">Save the Neural Classifier</h3>
+<p>if not specified, tokenizer will be saved as &quot;tokenizer.pkl&quot; and model files will be saved in &quot;model&quot; folder</p>
+<pre><code class="lang-python"># <span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.save_nn</span>(<span class="hljs-string">"tokenizer.pkl"</span>, <span class="hljs-string">"model"</span>)
+<span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.save_nn</span>()
+</code></pre>
+<h3 id="load-the-classifier">Load the Classifier</h3>
+<p>if not specified, &quot;model.pkl&quot; will be loaded as model</p>
+<pre><code class="lang-python"># <span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.load</span>("<span class="hljs-selector-tag">model</span><span class="hljs-selector-class">.pkl</span>")
+<span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.load</span>()
+</code></pre>
+<h3 id="load-the-neural-classifier">Load the Neural Classifier</h3>
+<p>if not specified, &quot;tokenizer.pkl&quot; will be loaded as tokenizer and files in &quot;model&quot; folder will be loaded as model</p>
+<pre><code class="lang-python"># <span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.load_nn</span>(<span class="hljs-string">"tokenizer.pkl"</span>, <span class="hljs-string">"model"</span>)
+<span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.load_nn</span>()
+</code></pre>
+<h3 id="detect-language-using-the-classifier">Detect language using the Classifier</h3>
+<pre><code class="lang-python">classifier.detect<span class="hljs-comment">("The quick brown fox jumps over the lazy dog.")</span>
+</code></pre>
+<h3 id="detect-language-using-the-neural-classifier">Detect language using the Neural Classifier</h3>
+<pre><code class="lang-python"><span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.detect_nn</span>(<span class="hljs-string">"El rápido zorro marrón salta sobre el perro perezoso."</span>)
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>In conclusion, Naive Bayes and Bidirectional LSTM are two popular approaches for language classification, each with its own strengths and weaknesses. Naive Bayes is simple and efficient, making it a good choice for small datasets and imbalanced classes. Bidirectional LSTM, on the other hand, can capture the sequential dependencies between words and can be very effective for large datasets.</p>
+<p>Ultimately, the choice between these two approaches will depend on the specific requirements of the task at hand. For simple language classification tasks, Naive Bayes can be a good choice, while more complex tasks may require the use of a Bidirectional LSTM.</p>
+
+</main>
+</body></html>
