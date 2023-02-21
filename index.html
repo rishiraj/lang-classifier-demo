@@ -101,7 +101,7 @@ audio{
 <tr>
 <td>
 <h1>Language Classifier</h1>
-<h2>Rishiraj Acharya</h2>
+<h2>Prashantkumar L. Borde, Snehangshu Bhattacharya, Anubhav Singh, Rishiraj Acharya</h2>
 <h2>Dynopii Inc.</h2>
 <h3>version: 1.0</h3>
 </td>
@@ -124,12 +124,7 @@ audio{
 <p>Bidirectional LSTM (Long Short-Term Memory) is a type of recurrent neural network (RNN) that can capture the sequential dependencies between the words in a text. It consists of two LSTM layers, one that reads the text forward and another that reads it backward. The output of the two layers is concatenated, resulting in a representation of the text that takes into account both the past and the future context of each word.</p>
 <p>LSTMs are able to capture long-term dependencies between words and can therefore be very effective for tasks such as language modeling and sequence classification. Bidirectional LSTMs, in particular, can be very useful for language classification as they are able to capture both local and global dependencies in the text.</p>
 <p>However, training a Bidirectional LSTM can be computationally expensive and requires a large amount of training data. It can also be prone to overfitting, especially when the dataset is small. In addition, LSTMs can be difficult to interpret, making it challenging to understand how they arrive at their predictions.</p>
-<h2 id="setup">Setup</h2>
-<p>Clone the repository using the following command:</p>
-<pre><code>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/dynopii/language-classifier.git
-</code></pre><p>Now inside the directory, install the dependencies using the following command:</p>
-<pre><code>pip <span class="hljs-keyword">install</span> -r requirements.txt
-</code></pre><h2 id="benchmark">Benchmark</h2>
+<h2 id="benchmark">Benchmark</h2>
 <p>These are the benchmarks as measured from our 70:30 train/test data split:</p>
 <table width="100%" class="samples">
 <thead>
