@@ -101,7 +101,7 @@ audio{
 <tr>
 <td>
 <h1>Language Classifier</h1>
-<h2>Rishiraj Acharya</h2>
+<h2>Prashantkumar L. Borde, Snehangshu Bhattacharya, Anubhav Singh, Rishiraj Acharya</h2>
 <h2>Dynopii Inc.</h2>
 <h3>version: 1.0</h3>
 </td>
@@ -124,12 +124,7 @@ audio{
 <p>Bidirectional LSTM (Long Short-Term Memory) is a type of recurrent neural network (RNN) that can capture the sequential dependencies between the words in a text. It consists of two LSTM layers, one that reads the text forward and another that reads it backward. The output of the two layers is concatenated, resulting in a representation of the text that takes into account both the past and the future context of each word.</p>
 <p>LSTMs are able to capture long-term dependencies between words and can therefore be very effective for tasks such as language modeling and sequence classification. Bidirectional LSTMs, in particular, can be very useful for language classification as they are able to capture both local and global dependencies in the text.</p>
 <p>However, training a Bidirectional LSTM can be computationally expensive and requires a large amount of training data. It can also be prone to overfitting, especially when the dataset is small. In addition, LSTMs can be difficult to interpret, making it challenging to understand how they arrive at their predictions.</p>
-<h2 id="setup">Setup</h2>
-<p>Clone the repository using the following command:</p>
-<pre><code>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/dynopii/language-classifier.git
-</code></pre><p>Now inside the directory, install the dependencies using the following command:</p>
-<pre><code>pip <span class="hljs-keyword">install</span> -r requirements.txt
-</code></pre><h2 id="benchmark">Benchmark</h2>
+<h2 id="benchmark">Benchmark</h2>
 <p>These are the benchmarks as measured from our 70:30 train/test data split:</p>
 <table width="100%" class="samples">
 <thead>
@@ -194,12 +189,41 @@ classifier = LanguageClassifier()
 <pre><code class="lang-python"># <span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.load_nn</span>(<span class="hljs-string">"tokenizer.pkl"</span>, <span class="hljs-string">"model"</span>)
 <span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.load_nn</span>()
 </code></pre>
-<h3 id="detect-language-using-the-classifier">Detect language using the Classifier</h3>
-<pre><code class="lang-python">classifier.detect<span class="hljs-comment">("The quick brown fox jumps over the lazy dog.")</span>
-</code></pre>
-<h3 id="detect-language-using-the-neural-classifier">Detect language using the Neural Classifier</h3>
-<pre><code class="lang-python"><span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.detect_nn</span>(<span class="hljs-string">"El rápido zorro marrón salta sobre el perro perezoso."</span>)
-</code></pre>
+<h2 id="results">Results</h2>
+<table width="100%" class="samples">
+<thead>
+  <tr>
+    <th class="tg-0pky">Text</th>
+    <th class="tg-0pky">True Language</th>
+    <th class="tg-0pky">Dynopii</th>
+    <th class="tg-0pky">LangID</th>
+    <th class="tg-0pky">TextCat</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">El rápido zorro marrón salta sobre el perro perezoso.</td>
+    <td class="tg-0pky">es</td>
+    <td class="tg-0pky">es</td>
+    <td class="tg-0pky">es</td>
+    <td class="tg-0pky">glg</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">tenia que reunirme hoy</td>
+    <td class="tg-0pky">es</td>
+    <td class="tg-0pky">es</td>
+    <td class="tg-0pky">ca</td>
+    <td class="tg-0pky">lad</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Amigos going cafeteria</td>
+    <td class="tg-0pky">en</td>
+    <td class="tg-0pky">en</td>
+    <td class="tg-0pky">lt</td>
+    <td class="tg-0pky">por</td>
+  </tr>
+</tbody>
+</table>
 <h2 id="conclusion">Conclusion</h2>
 <p>In conclusion, Naive Bayes and Bidirectional LSTM are two popular approaches for language classification, each with its own strengths and weaknesses. Naive Bayes is simple and efficient, making it a good choice for small datasets and imbalanced classes. Bidirectional LSTM, on the other hand, can capture the sequential dependencies between words and can be very effective for large datasets.</p>
 <p>Ultimately, the choice between these two approaches will depend on the specific requirements of the task at hand. For simple language classification tasks, Naive Bayes can be a good choice, while more complex tasks may require the use of a Bidirectional LSTM.</p>
