@@ -190,6 +190,7 @@ classifier = LanguageClassifier()
 <span class="hljs-selector-tag">classifier</span><span class="hljs-selector-class">.load_nn</span>()
 </code></pre>
 <h2 id="results">Results</h2>
+<p>These are the results of our classifier compared to other language identification libraries, LangID and TextCat:</p>
 <table width="100%" class="samples">
 <thead>
   <tr>
@@ -224,6 +225,13 @@ classifier = LanguageClassifier()
   </tr>
 </tbody>
 </table>
+<h2 id="references">References</h2>
+<ul>
+<li><p>LangID: Lui, Marco and Timothy Baldwin (2011) Cross-domain Feature Selection for Language Identification, In Proceedings of the Fifth International Joint Conference on Natural Language Processing (IJCNLP 2011), Chiang Mai, Thailand, pp. 553—561. Available from <a href="http://www.aclweb.org/anthology/I11-1062">http://www.aclweb.org/anthology/I11-1062</a></p>
+</li>
+<li><p>TextCat: Cavnar, W. B. and J. M. Trenkle, ``<a href="http://odur.let.rug.nl/~vannoord/TextCat/textcat.pdf">N-Gram-Based Text Categorization</a>&#39;&#39; In Proceedings of Third Annual Symposium on Document Analysis and Information Retrieval, Las Vegas, NV, UNLV Publications/Reprographics, pp. 161-175, 11-13 April 1994.</p>
+</li>
+</ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>In conclusion, Naive Bayes and Bidirectional LSTM are two popular approaches for language classification, each with its own strengths and weaknesses. Naive Bayes is simple and efficient, making it a good choice for small datasets and imbalanced classes. Bidirectional LSTM, on the other hand, can capture the sequential dependencies between words and can be very effective for large datasets.</p>
 <p>Ultimately, the choice between these two approaches will depend on the specific requirements of the task at hand. For simple language classification tasks, Naive Bayes can be a good choice, while more complex tasks may require the use of a Bidirectional LSTM.</p>
